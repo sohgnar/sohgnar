@@ -40,7 +40,8 @@ Write-Host "Downloading Speedtest"
 $SpeedtestDestinationPath = $WorkingDir + "speedtest\"
 $ZipPath = $WorkingDir + "speedtest.zip"
 Invoke-WebRequest -UseBasicParsing -Uri "https://install.speedtest.net/app/cli/ookla-speedtest-1.0.0-win64.zip" -OutFile $ZipPath
-Expand-Archive $ZipPath -DestinationPath $SpeedtestDestinationPath -Force
+Add-Type -assembly “system.io.compression.filesystem”
+[IO.Compression.ZipFile]::ExtractToDirectory($ZipPath,$SpeedtestDestinationPath)
 Remove-Item $ZipPath
 }
 Write-Host "Running Speedtest"
