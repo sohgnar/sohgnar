@@ -61,7 +61,7 @@ Write-Host "Sending to Results to Teams"
 
 
 $ContentType= 'application/json'
-$slackPayload = @"
+$TeamsPayload = @"
 {
 	"@type": "MessageCard",
 	"@context": "https://schema.org/extensions",
@@ -105,4 +105,4 @@ $slackPayload = @"
 	]
 }
 "@
-Invoke-RestMethod -uri $Webhook -Method Post -body $slackPayload -ContentType $ContentType
+Invoke-RestMethod -uri $Webhook -Method Post -body $TeamsPayload -ContentType $ContentType
