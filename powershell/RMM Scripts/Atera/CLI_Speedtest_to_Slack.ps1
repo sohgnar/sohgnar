@@ -10,9 +10,6 @@ $Webhook = "WEBHOOK URL HERE"
 # Working Directory (with a trailing \)
 $WorkingDir = "C:\System\"
 
-## DO NOT MODIFY ANYTHING BELOW!
-## Seriously - You could break stuff. :D
-
 # Get system hostname
 
 $hostname = $env:computername
@@ -35,10 +32,10 @@ If ($SpeedtestExecutable){
 Write-Host "Speedtest application exists - Skipping download"
 } ELSE {
 Write-Host "Downloading Speedtest"
-$SpeedtestDestinationPath = $WorkingDir + "speedtest\"
+$SpeedtestDestinationPath = $WorkingDir + "speedtest"
 $ZipPath = $WorkingDir + "speedtest.zip"
 Invoke-WebRequest -UseBasicParsing -Uri "https://install.speedtest.net/app/cli/ookla-speedtest-1.0.0-win64.zip" -OutFile $ZipPath
-Expand-Archive "C:\system\speedtest.zip" -DestinationPath $SpeedtestDestintationPath -Force
+Expand-Archive $ZipPath -DestinationPath $SpeedtestDestinationPath -Force
 Remove-Item $ZipPath
 }
 Write-Host "Running Speedtest"
